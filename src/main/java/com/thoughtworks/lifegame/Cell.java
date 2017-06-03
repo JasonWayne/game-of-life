@@ -5,7 +5,10 @@ package com.thoughtworks.lifegame;
  */
 public class Cell {
 
-    private boolean mIsAlive;
+    private boolean mIsNewAlive;
+
+
+    private boolean mIsOldAlive;
 
     private int mCellX;
     private int mCellY;
@@ -13,7 +16,8 @@ public class Cell {
     public Cell(int x, int y) {
         mCellX = x;
         mCellY = y;
-        mIsAlive = false;
+        mIsOldAlive = false;
+        mIsNewAlive = false;
     }
 
     /**
@@ -22,7 +26,8 @@ public class Cell {
      */
     public int query(Planet planet) {
         Cell[][] cellMatrix = planet.getCellMatrix();
-        int sideLength = cellMatrix[0].length;
+
+        int sideLength = cellMatrix.length;
 
         int baseX = mCellX - 1;
         int baseY = mCellY - 1;
@@ -31,14 +36,17 @@ public class Cell {
 
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                int currentX = baseX + i;
-                int currentY = baseY + j;
+                int currentX = baseX + j;
+                int currentY = baseY + i;
                 if (isValidCell(currentX, currentY, sideLength)) {
-                    if (cellMatrix[currentY][currentX].isAlive()) {
+                    if (cellMatrix[currentY][currentX].isOldAlive()) {
                         aliveCounter++;
                     }
                 }
             }
+        }
+        if (mIsOldAlive) {
+            aliveCounter--;
         }
 
         return aliveCounter;
@@ -51,22 +59,23 @@ public class Cell {
     public boolean update(Planet planet) {
         switch (query(planet)) {
             case 3:
-                mIsAlive = true;
+                mIsNewAlive = true;
                 break;
             case 2:
+                mIsNewAlive = mIsOldAlive;
                 break;
             default:
-                mIsAlive = false;
+                mIsNewAlive = false;
         }
-        return mIsAlive;
+        return mIsNewAlive;
     }
 
-    public boolean isAlive() {
-        return mIsAlive;
+    public boolean isNewAlive() {
+        return mIsNewAlive;
     }
 
-    public void setAlive(boolean alive) {
-        mIsAlive = alive;
+    public void setNewAlive(boolean newAlive) {
+        mIsNewAlive = newAlive;
     }
 
     public int getCellX() {
@@ -83,5 +92,18 @@ public class Cell {
 
     public void setCellY(int cellY) {
         mCellY = cellY;
+    }
+
+
+    public boolean isOldAlive() {
+        return mIsOldAlive;
+    }
+
+    public void setOldAlive(boolean oldAlive) {
+        mIsOldAlive = oldAlive;
+    }
+
+    public void synchronizeState() {
+        mIsOldAlive = mIsNewAlive;
     }
 }

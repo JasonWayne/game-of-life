@@ -1,7 +1,5 @@
 package com.thoughtworks.lifegame;
 
-import java.util.List;
-
 /**
  * Created by wuwenjie on 6/3/17.
  */
@@ -26,7 +24,16 @@ public class Planet {
         for (int i = 0; i < mSideLength; i++) {
             for (int j = 0; j < mSideLength; j++) {
                 Cell current = mCellMatrix[i][j];
+                if (i == 4 && j == 2) {
+                    System.out.println("here");
+                }
                 current.update(this);
+            }
+        }
+        for (int i = 0; i < mSideLength; i++) {
+            for (int j = 0; j < mSideLength; j++) {
+                Cell current = mCellMatrix[i][j];
+                current.synchronizeState();
             }
         }
     }
@@ -38,15 +45,22 @@ public class Planet {
         mCellMatrix = new Cell[mSideLength][mSideLength];
         for (int i = 0; i < mSideLength; i++) {
             for (int j = 0; j < mSideLength; j++) {
-                mCellMatrix[i][j] = new Cell(i, j);
+                mCellMatrix[i][j] = new Cell(j, i);
             }
         }
         switch (state) {
             case LStyle:
-                int[] y = new int[]{3, 3, 3, 2};
-                int[] x = new int[]{1, 2, 3, 3};
-                for (int i = 0; i < y.length; i++) {
-                    mCellMatrix[y[i]][x[i]].setAlive(true);
+                int[] yLStyle = new int[]{3, 3, 3, 2};
+                int[] xLStyle = new int[]{1, 2, 3, 3};
+                for (int i = 0; i < yLStyle.length; i++) {
+                    mCellMatrix[yLStyle[i]][xLStyle[i]].setOldAlive(true);
+                }
+                break;
+            case OneLine:
+                int[] yOneLine = new int[]{2, 2, 2, 2, 2};
+                int[] xOneLine = new int[]{0, 1, 2, 3, 4};
+                for (int i = 0; i < yOneLine.length; i++) {
+                    mCellMatrix[yOneLine[i]][xOneLine[i]].setOldAlive(true);
                 }
         }
     }

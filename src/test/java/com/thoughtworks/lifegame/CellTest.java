@@ -34,8 +34,11 @@ public void testQuery() throws Exception {
     assertEquals(0, planet.getCell(0, 0).query(planet));
     assertEquals(4, planet.getCell(2, 2).query(planet));
     assertEquals(2, planet.getCell(3, 4).query(planet));
-    assertEquals(3, planet.getCell(4, 2).query(planet));
+    assertEquals(2, planet.getCell(4, 2).query(planet));
     assertEquals(1, planet.getCell(4, 4).query(planet));
+    assertEquals(3, planet.getCell(2, 3).query(planet));
+    assertEquals(2, planet.getCell(3, 2).query(planet));
+    assertEquals(3, planet.getCell(2, 4).query(planet));
 }
 
 /** 
@@ -50,8 +53,11 @@ public void testUpdate() throws Exception {
     assertFalse(planet.getCell(0, 0).update(planet));
     assertFalse(planet.getCell(2, 2).update(planet));
     assertFalse(planet.getCell(3, 4).update(planet));
-    assertTrue(planet.getCell(4, 2).update(planet));
+    assertFalse(planet.getCell(4, 2).update(planet));
     assertFalse(planet.getCell(4, 4).update(planet));
+    assertTrue(planet.getCell(2, 3).update(planet));
+    assertTrue(planet.getCell(3, 2).update(planet));
+    assertTrue(planet.getCell(2, 4).update(planet));
 
 }
 
