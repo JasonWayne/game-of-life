@@ -103,6 +103,7 @@ public class Controller {
         state = Planet.InitState.LStyle;
 
         updateCanvas();
+        mCurrentTimer.cancel();
 
     }
 
@@ -111,6 +112,7 @@ public class Controller {
 
         state = Planet.InitState.OneLine;
         updateCanvas();
+        mCurrentTimer.cancel();
     }
 
     public void handleUpdateSideLengthClicked(ActionEvent actionEvent) {
@@ -124,6 +126,7 @@ public class Controller {
         mPlanet = new Planet(mSideLength);
         mPlanet.init(state);
         updateCanvas();
+        mCurrentTimer.cancel();
     }
 
     public void handleUpdateReproducePeriodClicked(ActionEvent actionEvent) {
