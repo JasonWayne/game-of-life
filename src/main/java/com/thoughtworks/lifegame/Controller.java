@@ -31,12 +31,6 @@ public class Controller {
     @FXML
     TextField fieldReproducePeriod;
 
-    @FXML
-    Label label;
-
-//    @FXML
-//    ChoiceBox initPanelStateChoiceBox;
-
     private GraphicsContext mGraphicsContext;
 
     private Color colorChessBoard = Color.valueOf("#FBE39B");

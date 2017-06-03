@@ -6,14 +6,13 @@ package com.thoughtworks.lifegame;
 public class Planet {
 
     public enum InitState {
-        LStyle, OneLine, TwoLine, Cross, Random
+        LStyle, OneLine
     }
 
     private int mSideLength;
 
     private Cell[][] mCellMatrix;
 
-    private int mCurrentEpoch;
 
 
     public Planet(int sideLength) {
@@ -73,15 +72,4 @@ public class Planet {
         return mCellMatrix;
     }
 
-    public void setCellMatrix(Cell[][] cellMatrix) {
-        mCellMatrix = cellMatrix;
-    }
-
-    public int getCurrentEpoch() {
-        return mCurrentEpoch;
-    }
-
-    public void setCurrentEpoch(int currentEpoch) {
-        mCurrentEpoch = currentEpoch;
-    }
 }

@@ -73,27 +73,6 @@ public class Cell {
         return mIsNewAlive;
     }
 
-    public void setNewAlive(boolean newAlive) {
-        mIsNewAlive = newAlive;
-    }
-
-    public int getCellX() {
-        return mCellX;
-    }
-
-    public void setCellX(int cellX) {
-        mCellX = cellX;
-    }
-
-    public int getCellY() {
-        return mCellY;
-    }
-
-    public void setCellY(int cellY) {
-        mCellY = cellY;
-    }
-
-
     public boolean isOldAlive() {
         return mIsOldAlive;
     }
