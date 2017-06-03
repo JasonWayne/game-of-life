@@ -2,10 +2,12 @@ package com.thoughtworks.lifegame;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 
 import java.util.Timer;
@@ -56,7 +58,6 @@ public class Controller {
         state = Planet.InitState.LStyle;
 
         cleanPlanet();
-
     }
 
     private void cleanPlanet() {
@@ -69,8 +70,6 @@ public class Controller {
         mPlanet.init(Planet.InitState.LStyle);
 
         updateCanvas();
-
-
     }
 
     private void updateCanvas() {
@@ -170,5 +169,15 @@ public class Controller {
         if (mCurrentTimer != null) {
             mCurrentTimer.cancel();
         }
+    }
+
+    public void handleCanvasMouseClicked(Event event) {
+        MouseEvent mouseEvent = (MouseEvent) event;
+        int x = (int) ((mouseEvent.getSceneX() - BROAD_PADDING) / gapX);
+        int y = (int) ((mouseEvent.getSceneY() - BROAD_PADDING) / gapY);
+
+        mPlanet.getCellMatrix()[y][x].toggleLiveState();
+        updateCanvas();
+        cancelTimer();
     }
 }

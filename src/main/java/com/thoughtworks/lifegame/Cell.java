@@ -84,4 +84,8 @@ public class Cell {
     public void synchronizeState() {
         mIsOldAlive = mIsNewAlive;
     }
+
+    public void toggleLiveState() {
+        mIsOldAlive = !mIsOldAlive;
+    }
 }
