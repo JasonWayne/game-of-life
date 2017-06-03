@@ -21,7 +21,6 @@ public class Cell {
     }
 
     /**
-     *
      * @return total alive cell around
      */
     public int query(Planet planet) {

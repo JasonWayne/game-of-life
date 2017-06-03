@@ -16,7 +16,7 @@ public class Planet {
     private int mCurrentEpoch;
 
 
-    public Planet (int sideLength){
+    public Planet(int sideLength) {
         mSideLength = sideLength;
     }
 
