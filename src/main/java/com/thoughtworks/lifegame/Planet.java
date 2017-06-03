@@ -19,6 +19,7 @@ public class Planet {
 
 
     public Planet (int sideLength){
+        mSideLength = sideLength;
     }
 
     public void updateAllCells() {}
@@ -28,6 +29,11 @@ public class Planet {
      */
     public void init(InitState state) {
         mCellMatrix = new Cell[mSideLength][mSideLength];
+        for (int i = 0; i < mSideLength; i++) {
+            for (int j = 0; j < mSideLength; j++) {
+                mCellMatrix[i][j] = new Cell(i, j);
+            }
+        }
         switch (state) {
             case LStyle:
                 int[] y = new int[]{3, 3, 3, 2};
@@ -39,6 +45,22 @@ public class Planet {
     }
 
     protected Cell getCell(int x, int y) {
-        return mCellMatrix[x][y];
+        return mCellMatrix[y][x];
+    }
+
+    public Cell[][] getCellMatrix() {
+        return mCellMatrix;
+    }
+
+    public void setCellMatrix(Cell[][] cellMatrix) {
+        mCellMatrix = cellMatrix;
+    }
+
+    public int getCurrentEpoch() {
+        return mCurrentEpoch;
+    }
+
+    public void setCurrentEpoch(int currentEpoch) {
+        mCurrentEpoch = currentEpoch;
     }
 }
