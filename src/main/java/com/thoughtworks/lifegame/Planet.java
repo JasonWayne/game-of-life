@@ -22,7 +22,14 @@ public class Planet {
         mSideLength = sideLength;
     }
 
-    public void updateAllCells() {}
+    public void updateAllCells() {
+        for (int i = 0; i < mSideLength; i++) {
+            for (int j = 0; j < mSideLength; j++) {
+                Cell current = mCellMatrix[i][j];
+                current.update(this);
+            }
+        }
+    }
 
     /**
      * initiate predefined planet state
