@@ -47,7 +47,7 @@ public class Controller {
 
     private double mUpdatePeriod = 500;
 
-    private Timer mCurrentTimer;
+    private Timer mCurrentTimer = null;
 
     public void initialize() {
         mGraphicsContext = canvas.getGraphicsContext2D();
@@ -103,7 +103,7 @@ public class Controller {
         state = Planet.InitState.LStyle;
 
         updateCanvas();
-        mCurrentTimer.cancel();
+        cancelTimer();
 
     }
 
@@ -112,7 +112,7 @@ public class Controller {
 
         state = Planet.InitState.OneLine;
         updateCanvas();
-        mCurrentTimer.cancel();
+        cancelTimer();
     }
 
     public void handleUpdateSideLengthClicked(ActionEvent actionEvent) {
@@ -126,11 +126,10 @@ public class Controller {
         mPlanet = new Planet(mSideLength);
         mPlanet.init(state);
         updateCanvas();
-        mCurrentTimer.cancel();
+        cancelTimer();
     }
 
     public void handleUpdateReproducePeriodClicked(ActionEvent actionEvent) {
-
         updatePeriod();
     }
 
@@ -164,6 +163,12 @@ public class Controller {
         mPlanet = new Planet(mSideLength);
         mPlanet.init(state);
         updateCanvas();
-        mCurrentTimer.cancel();
+        cancelTimer();
+    }
+
+    public void cancelTimer() {
+        if (mCurrentTimer != null) {
+            mCurrentTimer.cancel();
+        }
     }
 }
