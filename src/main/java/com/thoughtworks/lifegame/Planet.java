@@ -13,8 +13,6 @@ public class Planet {
 
     private Cell[][] mCellMatrix;
 
-
-
     public Planet(int sideLength) {
         mSideLength = sideLength;
     }

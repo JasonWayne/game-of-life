@@ -95,21 +95,7 @@ public class Controller {
     }
 
     public void handleUpdateClicked(ActionEvent actionEvent) {
-
         createNewTimer();
-
-
-//            Task<Void> task = new Task<Void>() {
-//                @Override
-//                public Void call() throws Exception {
-//                    Thread.sleep(250);
-//                    return null;
-//                }
-//            };
-//            new Thread(task).start();
-
-
-
     }
 
     public void handleLStyleClicked(ActionEvent actionEvent) {
