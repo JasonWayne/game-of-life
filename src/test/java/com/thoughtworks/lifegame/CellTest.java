@@ -44,9 +44,16 @@ public void testQuery() throws Exception {
 * 
 */ 
 @Test
-public void testUpdate() throws Exception { 
-//TODO: Test goes here... 
-} 
+public void testUpdate() throws Exception {
+    Planet planet = new Planet(5);
+    planet.init(Planet.InitState.LStyle);
+    assertFalse(planet.getCell(0, 0).update(planet));
+    assertFalse(planet.getCell(2, 2).update(planet));
+    assertFalse(planet.getCell(3, 4).update(planet));
+    assertTrue(planet.getCell(4, 2).update(planet));
+    assertFalse(planet.getCell(4, 4).update(planet));
+
+}
 
 
 } 

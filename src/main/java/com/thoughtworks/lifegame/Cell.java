@@ -48,10 +48,18 @@ public class Cell {
         return !(x < 0 || y < 0 || x >= sideLength || y >= sideLength);
     }
 
-
-
-
-    public void update(Planet planet) {}
+    public boolean update(Planet planet) {
+        switch (query(planet)) {
+            case 3:
+                mIsAlive = true;
+                break;
+            case 2:
+                break;
+            default:
+                mIsAlive = false;
+        }
+        return mIsAlive;
+    }
 
     public boolean isAlive() {
         return mIsAlive;
