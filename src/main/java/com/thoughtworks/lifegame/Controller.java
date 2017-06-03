@@ -22,9 +22,6 @@ public class Controller {
     Canvas canvas;
 
     @FXML
-    ProgressBar bar;
-
-    @FXML
     Button btn;
 
     @FXML
@@ -173,8 +170,8 @@ public class Controller {
 
     public void handleCanvasMouseClicked(Event event) {
         MouseEvent mouseEvent = (MouseEvent) event;
-        int x = (int) ((mouseEvent.getSceneX() - BROAD_PADDING) / gapX);
-        int y = (int) ((mouseEvent.getSceneY() - BROAD_PADDING) / gapY);
+        int x = (int) ((mouseEvent.getSceneX() - 100 - BROAD_PADDING) / gapX);
+        int y = (int) ((mouseEvent.getSceneY() - 45 - BROAD_PADDING) / gapY);
 
         mPlanet.getCellMatrix()[y][x].toggleLiveState();
         updateCanvas();
